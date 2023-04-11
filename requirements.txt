@@ -1,0 +1,8 @@
+luxai_s2
+pettingzoo==1.12.0
+gym==0.21.0
+stable-baselines3
+importlib_metadata==4.13.0
+opencv2
+tensorboard
+
