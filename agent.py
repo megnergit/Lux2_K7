@@ -17,7 +17,11 @@ from wrappers import SimpleUnitDiscreteController, SimpleUnitObservationWrapper
 # change this to use weights stored elsewhere
 # make sure the model weights are submitted with the other code files
 # any files in the logs folder are not necessary. Make sure to exclude the .zip extension here
+<<<<<<< HEAD
 MODEL_WEIGHTS_RELATIVE_PATH = "../logs/exp_1/models/best_model_cowboy"
+=======
+MODEL_WEIGHTS_RELATIVE_PATH = "./logs/exp_1/models/best_model"
+>>>>>>> bd9ba968aa9d377a31ac5c608b0732c0f2e6b5e1
 
 class Agent:
     def __init__(self, player: str, env_cfg: EnvConfig) -> None:
