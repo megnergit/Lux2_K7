@@ -6,7 +6,7 @@ importlib.reload(importlib_metadata)
 
 import sys
 # sys.path.clear()
-sys.path.insert(0, './v1/')
+# sys.path.insert(0, './v1/')
 # sys.path.insert(0, './')
 # sys.path.insert(0, './Lux-Design-S2/luxai_s2/')
 # sys.path.insert(0, '../Lux-Design-S2/luxai_s2/')
@@ -77,8 +77,8 @@ import pdb
 if __name__ == "__main__":
 
     set_random_seed(42)
-    log_path= "logs/exp_1"
-    num_envs = 4
+    log_path= "logs/exp_2"
+    num_envs = 20
 
     # help(SubprocVecEnv)
 
@@ -127,7 +127,9 @@ if __name__ == "__main__":
     #=============================================================
     # training
     #=============================================================
-    total_timesteps = 30_000_000
+
+#     total_timesteps = 30_000_000
+    total_timesteps = 1_000_000
     model.learn(
         total_timesteps, 
         callback=[TensorboardCallback(tag="train_metrics"), eval_callback],
