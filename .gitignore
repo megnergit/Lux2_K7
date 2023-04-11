@@ -1,5 +1,6 @@
 logs
 *.pth
+*.tmp
 *.tar.gz
 luxai_s2
 *.zip
