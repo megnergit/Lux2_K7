@@ -1,5 +1,5 @@
 """
-This file is where your agent's logic is kept. Define a bidding policy, factory placement policy, as well as a policy for playing the normal phase of the game
+0;95;0cThis file is where your agent's logic is kept. Define a bidding policy, factory placement policy, as well as a policy for playing the normal phase of the game
 
 The tutorial will learn an RL agent to play the normal phase and use heuristics for the other two phases.
 
@@ -17,7 +17,7 @@ from wrappers import SimpleUnitDiscreteController, SimpleUnitObservationWrapper
 # change this to use weights stored elsewhere
 # make sure the model weights are submitted with the other code files
 # any files in the logs folder are not necessary. Make sure to exclude the .zip extension here
-MODEL_WEIGHTS_RELATIVE_PATH = "./best_model"
+MODEL_WEIGHTS_RELATIVE_PATH = "../logs/exp_1/models/best_model_cowboy"
 
 class Agent:
     def __init__(self, player: str, env_cfg: EnvConfig) -> None:

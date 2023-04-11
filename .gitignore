@@ -3,3 +3,7 @@ logs
 *.tar.gz
 luxai_s2
 *.zip
+lux/
+wrappers/
+__init__.py
+__pycache__/
