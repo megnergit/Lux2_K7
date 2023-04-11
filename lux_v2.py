@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
     set_random_seed(42)
     log_path= "logs/exp_2"
-    num_envs = 16
+    num_envs = 4
 
     # help(SubprocVecEnv)
 
