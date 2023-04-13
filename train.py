@@ -43,7 +43,7 @@ from stable_baselines3.ppo import PPO
 
 from luxai_s2.state import ObservationStateDict, StatsStateDict, create_empty_stats
 from luxai_s2.utils.heuristics.factory import build_single_heavy
-from luxai_s2.utils.heuristics.factory_placement import place_near_random_ice
+# from luxai_s2.utils.heuristics.factory_placement import place_near_random_ice
 from luxai_s2.wrappers import (
      SB3Wrapper,
 #     SimpleSingleUnitDiscreteController,
@@ -78,13 +78,16 @@ if __name__ == "__main__":
 
     set_random_seed(42)
     log_path= "logs/exp_2"
-    num_envs = 32
+    num_envs = 4
 
     # help(SubprocVecEnv)
 
     env = SubprocVecEnv(
         [make_env("LuxAI_S2-v0", i, max_episode_steps=200) for i in range(num_envs)]
         )
+    
+    
+
 
     env.reset()
 

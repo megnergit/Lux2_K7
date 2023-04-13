@@ -48,7 +48,7 @@ from stable_baselines3.ppo import PPO
 
 from luxai_s2.state import ObservationStateDict, StatsStateDict, create_empty_stats
 from luxai_s2.utils.heuristics.factory import build_single_heavy
-from luxai_s2.utils.heuristics.factory_placement import place_near_random_ice
+# from luxai_s2.utils.heuristics.factory_placement import place_near_random_ice
 from luxai_s2.wrappers import (
     SB3Wrapper,
 )
@@ -400,6 +400,7 @@ def zero_bid(player, obs):
 
     return dict(bid=0, faction=faction) 
 
+#-------------------------------------------------------------
 def place_near_random_ice(player, obs):
 
     if obs["teams"][player]["metal"] == 0:
@@ -441,6 +442,7 @@ def place_near_random_ice(player, obs):
 
     metal = obs["teams"][player]["metal"]
     return dict(spawns=pos, metal=metal, water=metal)
+
 
 #=============================================================
 
