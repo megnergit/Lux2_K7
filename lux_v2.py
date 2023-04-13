@@ -129,7 +129,7 @@ if __name__ == "__main__":
     #=============================================================
 
 #     total_timesteps = 30_000_000
-    total_timesteps = 1_000_000
+    total_timesteps = 30_000_000
     model.learn(
         total_timesteps, 
         callback=[TensorboardCallback(tag="train_metrics"), eval_callback],
