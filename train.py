@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
     set_random_seed(42)
     log_path= "logs/exp_2"
-    num_envs = 8
+    num_envs = 12
 
     # help(SubprocVecEnv)
 
@@ -126,8 +126,8 @@ if __name__ == "__main__":
     # training
     #=============================================================
 
-#     total_timesteps = 30_000_000
-    total_timesteps = 16_000
+    total_timesteps = 30_000_000
+#    total_timesteps = 16_000
     model.learn(
         total_timesteps, 
         callback=[TensorboardCallback(tag="train_metrics"), eval_callback],
