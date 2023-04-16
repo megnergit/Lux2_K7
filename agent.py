@@ -9,7 +9,6 @@ and use heuristics for the other two phases.
 Note that like the other kits, you can only debug print to 
 standard error e.g. print("message", file=sys.stderr)
 """
-
 import os.path as osp
 import sys
 import numpy as np
@@ -19,8 +18,6 @@ from lux.config import EnvConfig
 from wrappers import SimpleUnitDiscreteController, SimpleUnitObservationWrapper
 from lux.utils import direction_to, my_turn_to_place_factory
 from lux.kit import obs_to_game_state, GameState, EnvConfig
-import pdb
-import pretty_errors
 
 #=====================================================================
 #---------------------------------------------------------------------
@@ -29,7 +26,6 @@ import pretty_errors
 # any files in the logs folder are not necessary. Make sure to exclude the .zip extension here
 # MODEL_WEIGHTS_RELATIVE_PATH = "../logs/exp_1/models/best_model_cowboy"
 MODEL_WEIGHTS_RELATIVE_PATH = "./logs/exp_1/models/best_model"
-
 #---------------------------------------------------------------------
 class Agent:
     def __init__(self, player: str, env_cfg: EnvConfig) -> None:
@@ -39,8 +35,8 @@ class Agent:
         self.env_cfg: EnvConfig = env_cfg
 
         self.faction_names = {
-            'player_0': 'Builders0',
-            'player_1': 'Builders1',
+            'player_0': "AlphaStrike",
+            'player_1': 'MotherMars'
         }
 #------
         self.bots = {}
@@ -59,14 +55,13 @@ class Agent:
     def bid_policy(self, step: int, obs, remainingOverageTime: int = 60):
         # the policy here is the same one used in the RL tutorial: 
         # https://www.kaggle.com/code/stonet2000/rl-with-lux-2-rl-problem-solving
-        return dict(faction="Builder0", bid=0)
+        return dict(faction="AlphaStrike", bid=0)
     
     #---------------------------------------------------------------------
     def factory_placement_policy(self, step: int, obs, remainingOverageTime: int = 60):
         # the policy here is the same one used in the RL tutorial: 
         # https://www.kaggle.com/code/stonet2000/rl-with-lux-2-rl-problem-solving
         print(obs)
-        pdb.set_trace()
         if obs["teams"][self.player]["metal"] == 0:
             return dict()
         potential_spawns = list(zip(*np.where(obs["board"]["valid_spawns_mask"] == 1)))
@@ -103,7 +98,6 @@ class Agent:
         return dict(spawn=pos, metal=metal, water=metal)
 
 #=====================================================================
-
     def early_setup(self, step: int, obs, remainingOverageTime: int = 60):
         '''
         Early Phase
@@ -153,6 +147,7 @@ class Agent:
                     closes_opp_factory_dist = 0
                     if len(opp_factories) >= 1:
                         closes_opp_factory_dist = np.min(np.mean((np.array(opp_factories) - loc)**2, 1))
+
                     closes_my_factory_dist = 0
                     if len(my_factories) >= 1:
                         closes_my_factory_dist = np.min(np.mean((np.array(my_factories) - loc)**2, 1))
@@ -170,7 +165,7 @@ class Agent:
 #                 actions['metal']=metal_left
 #                 actions['water']=water_left
                 actions['metal']=min(300, metal_left)
-                actions['water']=min(300, metal_left)
+                actions['water']=min(300, water_left)
             
         return actions
 

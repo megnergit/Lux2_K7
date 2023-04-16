@@ -14,12 +14,15 @@ from lux.kit import (
     to_json,
 )
 
+import pdb
+#==============================================
 ### DO NOT REMOVE THE FOLLOWING CODE ###
 agent_dict = (
     dict()
 )  # store potentially multiple dictionaries as kaggle imports code directly
 agent_prev_obs = dict()
 
+#==============================================
 
 def agent_fn(observation, configurations):
     """
@@ -30,6 +33,7 @@ def agent_fn(observation, configurations):
 
     player = observation.player
     remainingOverageTime = observation.remainingOverageTime
+
     if step == 0:
         env_cfg = EnvConfig.from_dict(configurations["env_cfg"])
         agent_dict[player] = Agent(player, env_cfg)
@@ -43,13 +47,14 @@ def agent_fn(observation, configurations):
     if step == 0:
         actions = agent.bid_policy(step, obs, remainingOverageTime)
     elif obs["real_env_steps"] < 0:
-        actions = agent.factory_placement_policy(step, obs, remainingOverageTime)
+#        actions = agent.factory_placement_policy(step, obs, remainingOverageTime)
+        actions = agent.early_setup(step, obs, remainingOverageTime)
     else:
         actions = agent.act(step, obs, remainingOverageTime)
 
     return process_action(actions)
 
-
+#==============================================
 if __name__ == "__main__":
 
     def read_input():
@@ -82,5 +87,7 @@ if __name__ == "__main__":
             configurations = obs["info"]["env_cfg"]
         i += 1
         actions = agent_fn(observation, dict(env_cfg=configurations))
-        # send actions to engine
         print(json.dumps(actions))
+        # send actions to engine
+#==============================================
+        

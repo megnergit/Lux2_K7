@@ -8,3 +8,8 @@ lux/
 wrappers/
 __init__.py
 __pycache__/
+test*
+agent_rulek-base.py_
+*.html
+*_tmp.py
+logs/
